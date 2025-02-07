@@ -1,0 +1,239 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Validition
+{
+public:
+    static bool isValidName(string n)
+    {
+        if (n.length() < 5)
+        {
+            cout << "Name must be at least 5 characters" << endl;
+            return false;
+        }
+        else if (n.length() > 20)
+        {
+            cout << "Name must be at most 20 characters" << endl;
+            return false;
+        }
+
+        return true;
+    }
+    static bool isValidPassword(string p)
+    {
+        if (p.length() < 8)
+        {
+            cout << "Password must be at least 8 characters" << endl;
+            return false;
+        }
+        else if (p.length() > 20)
+        {
+            cout << "Password must be at most 20 characters" << endl;
+            return false;
+        }
+
+        return true;
+    }
+    static bool isValidSalary(double s)
+    {
+        if (s < 5000)
+        {
+            cout << "Salary must be at least 5000" << endl;
+            return false;
+        }
+        return true;
+    }
+    static bool isValidBalance(double b)
+    {
+        if (b < 1500)
+        {
+            cout << "Balance must be at least 1500" << endl;
+            return false;
+        }
+        return true;
+    }
+};
+class Person
+{
+protected:
+    int id;
+    string name;
+    string password;
+
+public:
+    Person(int i, string n, string p) : id(i), name(n), password(p) {}
+    void setId(int id)
+    {
+        this->id = id;
+    }
+    void setName(string name)
+    {
+        if (Validition::isValidName(name))
+        {
+            this->name = name;
+        }
+    }
+    void setPassword(string password)
+    {
+        if (Validition::isValidPassword(password))
+        {
+            this->password = password;
+        }
+    }
+    int getId() { return id; }
+    string getName() { return name; }
+    string getPassword() { return password; }
+    virtual void display() const
+    {
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Password: " << password << endl;
+    }
+};
+class Client : public Person
+{
+private:
+    double balance;
+
+public:
+    Client(int i, string n, string p, double b) : Person(i, n, p), balance(b) {}
+    void setBalance(double balance)
+    {
+        if (Validition::isValidBalance(balance))
+        {
+            this->balance = balance;
+        }
+    }
+    double getBalance() { return balance; }
+
+    void setDeposit(double amount)
+    {
+        if (amount > 0)
+        {
+            balance += amount;
+            cout << "New balance: " << balance << endl;
+        }
+    }
+    void setWithdraw(double amount)
+    {
+        if (amount > 0 && amount <= balance)
+        {
+            balance -= amount;
+            cout << "New balance : " << balance << endl;
+        }
+        else
+        {
+            cout << "Amount exceeded balance" << endl;
+        }
+    }
+    void setTransferTo(double amount, Client &recipient)
+    {
+        if (amount > 0 && amount <= balance)
+        {
+            balance -= amount;
+            recipient.balance += amount;
+        }
+        cout << "New balance : " << balance << endl;
+    }
+    void checkBalance()
+    {
+        cout << "Balance: " << balance << endl;
+    }
+    void display() const override
+    {
+        Person::display();
+        cout << "Balance: " << balance << endl;
+    }
+};
+class Employee : public Person
+{
+private:
+    double salary;
+    vector<Client> clients;
+
+public:
+    Employee(int id, const string &name, const string &password, double salary) : Person(id, name, password)
+    {
+        setSalary(salary);
+    }
+
+    double getSalary() const { return salary; }
+
+    void setSalary(double salary)
+    {
+        if (Validition::isValidSalary(salary))
+        {
+            this->salary = salary;
+        }
+    }
+
+    void addClient(const Client &client)
+    {
+        clients.push_back(client);
+    }
+
+    void display() const override
+    {
+        Person::display();
+        cout << "Salary: " << salary << endl;
+        cout << "Clients managed by " << name << ":\n";
+        for (const auto &client : clients)
+        {
+            client.display();
+            cout << endl;
+        }
+    }
+};
+
+class Admin : public Employee
+{
+private:
+    vector<Employee> employees;
+    vector<Client> clients;
+
+public:
+    Admin(int id, const string &name, const string &password, double salary) : Employee(id, name, password, salary) {}
+
+    void addClient(const Client &client)
+    {
+        clients.push_back(client);
+    }
+
+    void addEmployee(const Employee &employee)
+    {
+        employees.push_back(employee);
+    }
+
+    void display() const override
+    {
+
+        Employee::display();
+        cout << "Employees managed by Admin:\n";
+        for (const auto &employee : employees)
+        {
+            employee.display();
+            cout << endl;
+        }
+        cout << "Clients managed by Admin:\n";
+        for (const auto &client : clients)
+        {
+            client.display();
+            cout << endl;
+        }
+    }
+};
+int main()
+{
+    Client c1(1, "aya okasha", "password123", 2000);
+    c1.display();
+
+    Employee e1(2, "Basmala", "securepass", 6000);
+    // e1.addClient(c1);
+    e1.display();
+
+    Admin a1(3, "nadaa", "adminpass", 8000);
+    // a1.addEmployee(e1);
+    a1.display();
+}
