@@ -24,7 +24,5 @@ public:
     void removeAllClients();
     void removeAllEmployees();
     void removeAllAdmins();
-
-    // virtual ~DataSourceInterface() {}
 };
 #endif
