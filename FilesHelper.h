@@ -28,8 +28,9 @@ public:
         file.close();
         return id;
     }
-    static void getAdmins(FileManager &fm) //
+    static void getAdmins()
     {
+        FileManager fm;
         fm.getAllAdmins();
     }
     static void ClearFile(string filename, string lastidfile)
