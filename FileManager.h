@@ -15,7 +15,7 @@ class FileManager : public DataSourceInterface
 public:
     bool adminExists() override
     {
-        ifstream file("admins.txt");
+        ifstream file("admin.txt");
         if (!file)
             return false;
         string line;
@@ -34,7 +34,7 @@ public:
             cout << "An admin is already exists." << endl;
             return;
         }
-        ofstream file("admins.txt", ios::app);
+        ofstream file("admin.txt", ios::app);
 
         file << admin.getId() << " " << admin.getName() << " " << admin.getPassword() << " " << admin.getSalary() << endl;
         file.close();
@@ -43,7 +43,7 @@ public:
 
     void getAllAdmins() override
     {
-        ifstream file("admins.txt");
+        ifstream file("admin.txt");
         string line;
         while (getline(file, line))
         {
@@ -54,7 +54,7 @@ public:
 
     void removeAllAdmins() override
     {
-        ofstream file("admins.txt", ios::trunc);
+        ofstream file("admin.txt", ios::trunc);
         file.close();
     }
 };
