@@ -1,11 +1,14 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
+
 #include <iostream>
 #include <string>
 #include <vector>
+
 #include "Person.h"
 
 using namespace std;
+
 class Employee : public Person
 {
 private:

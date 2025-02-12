@@ -1,10 +1,11 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
+
 #include <iostream>
 
-#include "client.h"
-#include "employee.h"
-#include "admin.h"
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
 
 #include <string>
 

@@ -1,11 +1,12 @@
 #ifndef FILESHELPER_H
 #define FILESHELPER_H
+
 #include <iostream>
 #include <fstream>
 
 #include "FileManager.h"
 #include "Interface.h"
-#include "parser.h"
+#include "Parser.h"
 #include "Admin.h"
 
 using namespace std;
