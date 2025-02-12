@@ -13,7 +13,7 @@ using namespace std;
 class FileManager : public DataSourceInterface
 {
 public:
-    bool adminExists()
+    bool adminExists() override
     {
         ifstream file("admins.txt");
         if (!file)
@@ -27,11 +27,11 @@ public:
         file.close();
         return false;
     }
-    void addAdmin(Admin admin)
+    void addAdmin(Admin admin) override
     {
         if (adminExists())
         {
-            cout << "Only one admin is allowed." << endl;
+            cout << "An admin is already exists." << endl;
             return;
         }
         ofstream file("admins.txt", ios::app);
@@ -41,7 +41,7 @@ public:
         cout << "Admin added successfully." << endl;
     }
 
-    void getAllAdmins()
+    void getAllAdmins() override
     {
         ifstream file("admins.txt");
         string line;
@@ -52,7 +52,7 @@ public:
         file.close();
     }
 
-    void removeAllAdmins()
+    void removeAllAdmins() override
     {
         ofstream file("admins.txt", ios::trunc);
         file.close();

@@ -24,7 +24,6 @@ int main()
     Admin admin4(4, "Admin User four", "adminPass", 10000);
 
     FileManager fm;
-
     fm.addAdmin(admin1);
     fm.addAdmin(admin2);
     fm.addAdmin(admin3);

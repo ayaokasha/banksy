@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "FileManager.h"
+#include "FileManager.H"
 #include "Interface.h"
 #include "Parser.h"
 #include "Admin.h"
@@ -28,9 +28,8 @@ public:
         file.close();
         return id;
     }
-    static void getAdmins()
+    static void getAdmins(FileManager &fm) //
     {
-        FileManager fm;
         fm.getAllAdmins();
     }
     static void ClearFile(string filename, string lastidfile)
