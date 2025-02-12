@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "FileManager.H"
+#include "FileManager.h"
 #include "Interface.h"
 #include "Parser.h"
 #include "Admin.h"
