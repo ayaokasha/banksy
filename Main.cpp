@@ -28,6 +28,8 @@ int main()
     fm.addAdmin(admin2);
     fm.addAdmin(admin3);
     fm.addAdmin(admin4);
+    cout << "-------------------" << endl;
+
     cout << "All Admins:" << endl;
     fm.getAllAdmins();
     cout << "-------------------" << endl;
@@ -35,13 +37,11 @@ int main()
     FilesHelper::savelast("lastAdminId.txt", 1);
 
     int lastAdminId = FilesHelper::getlast("lastAdminId.txt");
-
     cout << "Last Admin ID: " << lastAdminId << endl;
     cout << "-------------------" << endl;
 
     //     FilesHelper::ClearFile("admins.txt", "lastAdminId.txt");
     //     cout << "Admins file cleared and last ID reset." << endl;
-
     //     cout << "All Admins after clearing:" << endl;
     //     fm.getAllAdmins();
     //     cout << "-------------------" << endl;
