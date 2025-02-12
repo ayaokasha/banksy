@@ -6,7 +6,7 @@
 #include "Admin.h"
 #include "parser.h"
 #include "Interface.h"
-#include "FilesHelper.h"
+#include "FilesHelper.h"    
 #include "FileManager.h"
 
 #include <vector>
@@ -40,10 +40,10 @@ int main()
     cout << "Last Admin ID: " << lastAdminId << endl;
     cout << "-------------------" << endl;
 
-    // FilesHelper::ClearFile("admins.txt", "lastAdminId.txt");
-    // cout << "Admins file cleared and last ID reset." << endl;
+    FilesHelper::ClearFile("admins.txt", "lastAdminId.txt");
+    cout << "Admins file cleared and last ID reset." << endl;
 
-    // cout << "All Admins after clearing:" << endl;
-    // fm.getAllAdmins();
-    // cout << "-------------------" << endl;
+    cout << "All Admins after clearing:" << endl;
+    fm.getAllAdmins();
+    cout << "-------------------" << endl;
 }
