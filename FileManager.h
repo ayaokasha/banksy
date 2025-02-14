@@ -7,7 +7,7 @@
 #include "FilesHelper.h"
 #include "Interface.h"
 #include "Admin.h"
-# include "Client"
+#include "Client.h"
 using namespace std;
 
 class FileManager : public DataSourceInterface
