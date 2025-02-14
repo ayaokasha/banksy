@@ -13,7 +13,7 @@ using namespace std;
 class FileManager : public DataSourceInterface
 {
 public:
-     bool File() override {
+     bool fileExists() override {
         ifstream ClientFile("Client.txt");
         if(!ClientFile){
             cout << "File not found" << endl;
@@ -33,11 +33,11 @@ public:
             cout << "Unable to open file" << endl;
             return;
         }
-        ClientFile << client.getId() << " " << client.getName() << " " << client.getPassword << " " << client.balance() << endl;
+        ClientFile << Client.getId() << " " << Client.getName() << " " << Client.getPassword << " " << Client.balance() << endl;
         ClientFile.close();
         cout << "Client added successfully" << endl;
     }
-    void getAllClient() override {
+    void getAllClients() override {
         ifstream ClientFile("Client.txt");
         if(!ClientFile){
             cout << "UNable to open file" << endl;
@@ -49,7 +49,7 @@ public:
         }
          ClientFile.close();
     }
-     void removeAllClient() override {
+     void removeAllClients() override {
         ofstream ClientFile("Client.txt", ios::trunc);
         ClientFile.close();
         cout << "All client have been remove successfully" << endl;
