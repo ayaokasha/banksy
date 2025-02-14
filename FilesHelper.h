@@ -48,8 +48,8 @@ public:
      static void ClearFile(string filename, string lastidfile)
     {
         ofstream ClientFile(filename, ios::trunc);
-        file.close();
-        savelast(lastidfile, 0);
+        ClientFile.close();
+        savelast(lastidFile, 0);
     }
     static void savelast(string filename, int id)
     {
@@ -72,8 +72,8 @@ public:
     }
     static void ClearFile(string filename, string lastidfile)
     {
-        ofstream ClientFile(filename, ios::trunc);
-        ClientFile.close();
+        ofstream file(filename, ios::trunc);
+        file.close();
         savelast(lastidfile, 0);
     }
 };
