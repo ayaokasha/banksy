@@ -72,7 +72,7 @@ public:
     }
     static void ClearFile(string filename, string lastidfile)
     {
-        ofstream file(filename, ios::trunc);
+        ofstream ClientFile(filename, ios::trunc);
         ClientFile.close();
         savelast(lastidfile, 0);
     }
