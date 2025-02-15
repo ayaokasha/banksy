@@ -18,7 +18,7 @@ public:
      static void savelast(string filename, int id)
     {
         
-        ofstream ClientFile(filename;ios::app);
+        ofstream ClientFile(filename , ios::app);
         ClientFile << id << endl;
         ClientFile.close();
     }
@@ -49,7 +49,7 @@ public:
     {
         ofstream ClientFile(filename, ios::trunc);
         ClientFile.close();
-        savelast(lastidFile, 0);
+        savelast(lastidfile, 0);
     }
     static void savelast(string filename, int id)
     {
