@@ -39,6 +39,21 @@ class Parser
         double balance = stof(data[4]);
         return client(id , name , password , balance);
     } 
+
+
+ static Employee parsetToemployee(string& line){
+        vector<string> data = split(line, ' ');
+        if(data.size() < 3){
+            cout << "Invalid input format for employee" << endl;
+            return employee();
+        }
+        int id = stoi(data[0]);
+        string name = data[1];
+        string password = data [2];
+        double balance = stof(data[3]);
+        return employee (id , name , password , balance);
+    } 
+
     static Admin parserToAdmin(string line)
     {
         vector<string> data = split(line, ' ');
