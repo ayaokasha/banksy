@@ -8,6 +8,7 @@
 #include "Interface.h"
 #include "Admin.h"
 #include "Client.h"
+#include "employee.h"
 
 using namespace std;
 
@@ -63,6 +64,47 @@ public:
         ofstream ClientFile("Client.txt", ios::trunc);
         ClientFile.close();
         cout << "All client have been remove successfully" << endl;
+    }
+bool employeeExist() override{
+    ifstream file("employee.txt");
+    if(!file)
+        cout<< "file not found" << endl;
+        return false;
+                      }
+           string line;
+           if ( getline( file,line))
+              {
+                file.close();
+                 returnfalse;
+                   }
+void addemployee(Employee employee) override{
+if (employee exist())
+{
+cout << An employee is already exists."<<endl;
+return;
+}
+ofstream file("employee.txt", ios::app);
+
+        file << employee.getId() << " " << employee.getName() << " " << employee.getPassword() << " " << employee.getSalary() << endl;
+        file.close();
+        cout << "employee added successfully." << endl
+}
+
+ void getAllemployee() override
+    {
+        ifstream file("employee.txt");
+        string line;
+        while (getline(file, line))
+        {
+            cout << line << endl;
+        }
+        file.close();
+    }
+
+    void removeAllemployee() override
+    {
+        ofstream file("admin.employee", ios::trunc);
+        file.close();
     }
     bool adminExists() override
     {
