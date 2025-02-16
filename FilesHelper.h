@@ -9,6 +9,7 @@
 #include "Parser.h"
 #include "Admin.h"
 #include "Client.h"
+#include " employee.h"
 
 using namespace std;
 
@@ -37,14 +38,32 @@ public:
             cout << "unable to open file" << endl;
             return;
         }
+         
         ClientFile << c.getId() << "," << c.getName() << "," << c.getPassword() << "," << c.getBalance() << endl;
         ClientFile.close();
     }
+static void saveEmployee( string fileName,string lastFile,Employee e ){
+     string file =" employee.text";
+     ofstream employeeFile( file,ios::app);
+     if(!employee file){ 
+     cout<< " unable to open file" << endl;
+          }
+}
+
     static void getClients()
     {
         FileManager fm;
         fm.getAllAdmins();
     }
+
+static void getemployee()
+    {
+        FileManager fm;
+        fm.getAllemployee();
+    }
+
+
+
      static void ClearFile(string filename, string lastidfile)
     {
         ofstream ClientFile(filename, ios::trunc);
