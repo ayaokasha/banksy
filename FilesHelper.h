@@ -78,14 +78,14 @@ public:
         savelastEmployee(lastidfile, 0);
     }
     // admin
-    static void savelastAdmin(string filename, int id)
+    static void savelastAdmin(string filename)
     {
         ofstream Adminfile(filename);
         if (!Adminfile)
         {
             cout << "Error: Unable to open file " << endl;
         }
-        Adminfile << id << endl;
+        Adminfile << 1;
         Adminfile.close();
     }
     static int getlastAdmin(string filename)
@@ -95,10 +95,10 @@ public:
         {
             cout << "Error: Unable to open file " << endl;
         }
-        int id;
-        Adminfile >> id;
+        int lastId;
+        Adminfile >> lastId;
         Adminfile.close();
-        return id;
+        return lastId;
     }
     static void getAdmins()
     {
@@ -113,7 +113,9 @@ public:
             cout << "Error: Unable to open file " << endl;
         }
         Adminfile.close();
-        savelastAdmin(lastidfile, 0);
+        ofstream lastId(lastidfile, ios::trunc);
+        lastId << 0;
+        lastId.close();
     }
 };
 

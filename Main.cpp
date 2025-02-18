@@ -20,23 +20,39 @@ int main()
 {
 
     // Admin
-    Admin admin1(1, "Admin User one", "adminPass", 100);
-    Admin admin2(2, "Admin User two", "adminPass", 10000);
-    Admin admin3(3, "Admin User three", "adminPass", 10000);
-    Admin admin4(4, "Admin User four", "adminPass", 10000);
+    Admin admin1;
+    admin1.getId();
+    admin1.getName();
+    admin1.setName(Validation::enterName());
+
+    admin1.getPassword();
+    admin1.setPassword(Validation::enterPassword());
+
+    admin1.getSalary();
+    admin1.setSalary(Validation::enterSalary());
+
+    Admin admin2;
+    admin2.getId();
+
+    admin2.getName();
+    admin2.setName(Validation::enterName());
+
+    admin2.getPassword();
+    admin2.setPassword(Validation::enterPassword());
+
+    admin2.getSalary();
+    admin2.setSalary(Validation::enterSalary());
 
     FileManager fm;
     fm.addAdmin(admin1);
     fm.addAdmin(admin2);
-    fm.addAdmin(admin3);
-    fm.addAdmin(admin4);
     cout << "-------------------" << endl;
 
     cout << "All Admins:" << endl;
     fm.getAllAdmins();
     cout << "-------------------" << endl;
 
-    FilesHelper::savelastAdmin("AdminLast.txt", 1);
+    FilesHelper::savelastAdmin("AdminLast.txt");
 
     int lastAdminId = FilesHelper::getlastAdmin("AdminLast.txt");
     cout << "Last Admin ID: " << lastAdminId << endl;
