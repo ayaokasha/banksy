@@ -72,6 +72,18 @@ public:
     //     fm.getAllEmployees();
     // }
 
+
+
+
+  static void ClearFile(string filename, string lastidfile)
+    {
+        ofstream Employeefile(filename, ios::trunc);
+        Employeefile.close();
+        savelastEmployee(lastidfile, 0);
+    }
+};
+
+
     // admin
     static void savelastAdmin(string filename, int id)
     {
@@ -111,5 +123,6 @@ public:
         savelastAdmin(lastidfile, 0);
     }
 };
+
 
 #endif

@@ -33,6 +33,7 @@ public:
     void addClient(const Client &client)
     {
         clients.push_back(client);
+<<<<<<< HEAD
         cout << "client added sucessfully." << endl;
     }
     // client*searchclient(int id){
@@ -61,6 +62,30 @@ public:
     //     }
     // }
 
+=======
+        cout << "client added successfully"<< endl;
+    }
+   client* searchclient(int id)
+   {
+       for(auto& client : clients){
+        if(client.getId() == id){
+            return &client;
+        }
+       }
+      return nullptr;
+   }
+void editclient( int id, string name, string password, double balance){
+       Client* client = searchclient(id);
+       if(client != nullptr){
+        client->setName(name);
+        client->setPassword(password);
+        client->setBalance(balance);
+       }
+       else{
+        cout <<"Client not found" << endl;
+       }
+}
+>>>>>>> 7c240eb14ca3be05d22bc71983b3706b14f26f8e
     void display() const override
     {
         Person::display();
