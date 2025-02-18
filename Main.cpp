@@ -34,9 +34,9 @@ int main()
     fm.getAllAdmins();
     cout << "-------------------" << endl;
 
-    FilesHelper::savelast("lastAdminId.txt", 1);
+    FilesHelper::savelast("AdminLast.txt", 1);
 
-    int lastAdminId = FilesHelper::getlast("lastAdminId.txt");
+    int lastAdminId = FilesHelper::getlast("AdminLast.txt");
     cout << "Last Admin ID: " << lastAdminId << endl;
     cout << "-------------------" << endl;
 

@@ -8,31 +8,13 @@
 #include "Interface.h"
 #include "Admin.h"
 #include "Client.h"
-#include "employee.h"
+#include "employee.h" //
 
 using namespace std;
 
 class FileManager : public DataSourceInterface
 {
 public:
-    // bool fileExists() override
-    // {
-    //     ifstream ClientFile("Client.txt");
-    //     if (!ClientFile)
-    //     {
-    //         cout << "File not found" << endl;
-    //         return false;
-    //     }
-
-    //     string line;
-    //     if (getline(ClientFile, line))
-    //     {
-    //         ClientFile.close();
-    //         return true;
-    //     }
-    //     ClientFile.close();
-    //     return false;
-    // }
     void addClient(Client client) override
     {
         ofstream ClientFile("Client.txt", ios::app);
@@ -65,90 +47,95 @@ public:
         ClientFile.close();
         cout << "All client have been remove successfully" << endl;
     }
-bool employeeExist() override{
-    ifstream file("employee.txt");
-    if(!file)
-        cout<< "file not found" << endl;
-        return false;
-                      }
-           string line;
-           if ( getline( file,line))
-              {
-                file.close();
-                 returnfalse;
-                   }
-void addemployee(Employee employee) override{
-if (employee exist())
-{
-cout << An employee is already exists."<<endl;
-return;
-}
-ofstream file("employee.txt", ios::app);
-
-        file << employee.getId() << " " << employee.getName() << " " << employee.getPassword() << " " << employee.getSalary() << endl;
-        file.close();
-        cout << "employee added successfully." << endl
-}
-
- void getAllemployee() override
+    bool employeeExist() override
     {
         ifstream file("employee.txt");
-        string line;
-        while (getline(file, line))
-        {
-            cout << line << endl;
-        }
-        file.close();
-    }
-
-    void removeAllemployee() override
-    {
-        ofstream file("admin.employee", ios::trunc);
-        file.close();
-    }
-    bool adminExists() override
-    {
-        ifstream file("admin.txt");
         if (!file)
-            return false;
-        string line;
-        if (getline(file, line))
-        {
-            file.close();
-            return true;
-        }
-        file.close();
+            cout << "file not found" << endl;
         return false;
     }
-    void addAdmin(Admin admin) override
+    string line;
+    if (getline(file, line))
     {
-        if (adminExists())
+        file.close();
+        returnfalse;
+    }
+    void addemployee(Employee employee) override
+    {
+        if (employee exist())
         {
-            cout << "An admin is already exists." << endl;
-            return;
+            cout << An employee is already exists."<<endl;
+                    return;
         }
-        ofstream file("admin.txt", ios::app);
-
-        file << admin.getId() << " " << admin.getName() << " " << admin.getPassword() << " " << admin.getSalary() << endl;
-        file.close();
-        cout << "Admin added successfully." << endl;
     }
+    ofstream file("employee.txt", ios::app);
 
-    void getAllAdmins() override
+    file << employee.getId() << " " << employee.getName() << " " << employee.getPassword() << " " << employee.getSalary() << endl;
+    file.close();
+    cout << "employee added successfully." << endl
+}
+
+void
+getAllemployee() override
+{
+    ifstream file("employee.txt");
+    string line;
+    while (getline(file, line))
     {
-        ifstream file("admin.txt");
-        string line;
-        while (getline(file, line))
-        {
-            cout << line << endl;
-        }
-        file.close();
+        cout << line << endl;
     }
+    file.close();
+}
 
-    void removeAllAdmins() override
+void removeAllemployee() override
+{
+    ofstream file("admin.employee", ios::trunc);
+    file.close();
+}
+bool adminExists() override
+{
+    ifstream file("admin.txt");
+    if (!file)
+        return false;
+    string line;
+    if (getline(file, line))
     {
-        ofstream file("admin.txt", ios::trunc);
         file.close();
+        return true;
     }
-};
+    file.close();
+    return false;
+}
+void addAdmin(Admin admin) override
+{
+    if (adminExists())
+    {
+        cout << "An admin is already exists." << endl;
+        return;
+    }
+    ofstream file("admin.txt", ios::app);
+
+    file << admin.getId() << " " << admin.getName() << " " << admin.getPassword() << " " << admin.getSalary() << endl;
+    file.close();
+    cout << "Admin added successfully." << endl;
+}
+
+void getAllAdmins() override
+{
+    ifstream file("admin.txt");
+    string line;
+    while (getline(file, line))
+    {
+        cout << line << endl;
+    }
+    file.close();
+}
+
+void removeAllAdmins() override
+{
+    ofstream file("admin.txt", ios::trunc);
+    file.close();
+}
+}
+;
 #endif
