@@ -9,7 +9,7 @@
 #include "Parser.h"
 #include "Admin.h"
 #include "Client.h"
-#include " employee.h"///
+#include "Employee.h" 
 
 using namespace std;
 
@@ -17,14 +17,14 @@ class FilesHelper
 {
 public:
     // clinet
-    static void savelast(string filename, int id)
+    static void savelastClient(string filename, int id)
     {
 
         ofstream ClientFile(filename, ios::app);
         ClientFile << id << endl;
         ClientFile.close();
     }
-    static int getlast(string filename)
+    static int getlastClient(string filename)
     {
         ifstream ClientFile(filename);
         int id;
@@ -45,17 +45,23 @@ public:
         ClientFile << c.getId() << "," << c.getName() << "," << c.getPassword() << "," << c.getBalance() << endl;
         ClientFile.close();
     }
-    static void getClients()///
+    static void getClients()
     {
         FileManager fm;
-        fm.getAllAdmins();
+        fm.getAllClients();
+    }
+    static void ClearFile(string filename, string lastidfile)
+    {
+        ofstream ClientFile(filename, ios::trunc);
+        ClientFile.close();
+        savelastClient(lastidfile, 0);
     }
     // employee
     static void saveEmployee(string fileName, string lastFile, Employee e)
     {
         string file = " employee.text";
         ofstream employeeFile(file, ios::app);
-        if (!employee file)
+        if (!employeeFile)
         {
             cout << " unable to open file" << endl;
         }
@@ -63,15 +69,9 @@ public:
     static void getemployee()
     {
         FileManager fm;
-        fm.getAllemployee();
+        fm.getAllEmployees();
     }
 
-    static void ClearFile(string filename, string lastidfile)
-    {
-        ofstream ClientFile(filename, ios::trunc);
-        ClientFile.close();
-        savelast(lastidfile, 0);
-    }
     // admin
     static void savelastAdmin(string filename, int id)
     {
