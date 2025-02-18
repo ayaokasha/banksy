@@ -14,6 +14,7 @@ private:
     double balance;
 
 public:
+    Client() : id(0) , name(" ") , password(" ") , balance(0.0){}
     Client(int i, string n, string p, double b) : Person(i, n, p) { balance = b; }
     void setBalance(double balance)
     {
