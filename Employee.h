@@ -35,7 +35,7 @@ public:
         clients.push_back(client);
         cout << "client added successfully"<< endl;
     }
-   client* searchClient(int id)
+   client* searchclient(int id)
    {
        for(auto& client : clients){
         if(client.getId() == id){
@@ -49,19 +49,17 @@ void listclients(){
         cout << "No clients registered."<< endl;
     }
 }
-void editclient( int id, string name,string password ,double balance){
-    client*client =searchclient(id);
-    if(client){
-        client->name = name;
-        client->password = password;
-        client->balance = balance;
-        cout << " client information updated." <<endl;
-    }
-    else{
-        cout << " client not found." <<endl;
-    }
+void editclient( int id, string name, string password, double balance){
+       Client* client = searchclient(id);
+       if(client != nullptr){
+        client->setName(name);
+        client->setPassword(password);
+        client->setBalance(balance);
+       }
+       else{
+        cout <<"Client not found" << endl;
+       }
 }
-
     void display() const override
     {
         Person::display();
