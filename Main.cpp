@@ -18,6 +18,43 @@ using namespace std;
 
 int main()
 {
+    //EMPLOYEE
+    
+Employee employee1( "Mahmoud",123,"password156",5000);
+     Employee employee2( "Ahmed",122,"password234",6000);
+     Employee employee3( "Ashraf",121,"password111",7000);
+     Employee employee4( "Mohamed",120,"password362",8000);
+    
+    FileManager fm;
+    fm.addEmployee( employee1);
+    fm.addEmployee( employee2);
+    fm.addEmployee( employee3);
+    fm.addEmployee( employee4);
+
+    fm.searchEmployee( employee2);
+    
+fm.listEmployee( employee1);
+ fm.listEmployee( employee3);
+
+fm.editEmployee( employee2);
+fm.editEmployee( employee4);
+     
+    cout<< "--------------------------" << endl;
+    cout << " All Employee" << endl;
+
+FilesHelper::savelastEmployee("EmployeeLast.txt");
+
+int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
+cout << "Last Employee ID: " << lastEmployeeId << endl;
+cout << "-------------------" << endl;
+
+FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
+cout << "Employee file cleared and last ID reset." << endl;
+cout << "All Employee after clearing:" << endl;
+fm.getAllEmployee();
+cout << "------------------" << endl;
+    
+}
 
     // Admin
     Admin admin1;
