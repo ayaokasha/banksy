@@ -55,9 +55,10 @@ public:
         string line;
         while (getline(ClientFile, line))
         {
-            cout << line << endl;
+            clients.push_back(line)
         }
         ClientFile.close();
+        return clients;
     }
     void removeAllClients() override
     {
