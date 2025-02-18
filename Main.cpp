@@ -42,7 +42,7 @@ int main()
     cout << "Last Admin ID: " << lastAdminId << endl;
     cout << "-------------------" << endl;
 
-    FilesHelper::ClearFile("admin.txt", "AdminLast.txt");
+    FilesHelper::ClearAdminFile("admin.txt", "AdminLast.txt");
     cout << "Admins file cleared and last ID reset." << endl;
     cout << "All Admins after clearing:" << endl;
     fm.getAllAdmins();

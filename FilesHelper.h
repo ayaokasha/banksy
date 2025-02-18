@@ -39,7 +39,6 @@ public:
         if (!ClientFile)
         {
             cout << "unable to open file" << endl;
-            return;
         }
 
         ClientFile << c.getId() << "," << c.getName() << "," << c.getPassword() << "," << c.getBalance() << endl;
@@ -50,7 +49,7 @@ public:
         FileManager fm;
         fm.getAllClients();
     }
-    static void ClearFile(string filename, string lastidfile)
+    static void ClearClientFile(string filename, string lastidfile)
     {
         ofstream ClientFile(filename, ios::trunc);
         ClientFile.close();
@@ -72,7 +71,7 @@ public:
         fm.getAllEmployees();
     }
 
-    static void ClearFile(string filename, string lastidfile)
+    static void ClearEmployeeFile(string filename, string lastidfile)
     {
         ofstream Employeefile(filename, ios::trunc);
         Employeefile.close();
@@ -106,7 +105,7 @@ public:
         FileManager fm;
         fm.getAllAdmins();
     }
-    static void ClearFile(string filename, string lastidfile)
+    static void ClearAdminFile(string filename, string lastidfile)
     {
         ofstream Adminfile(filename, ios::trunc);
         if (!Adminfile)

@@ -21,7 +21,6 @@ public:
         if (!ClientFile)
         {
             cout << "Unable to open file" << endl;
-            return;
         }
         ClientFile << client.getId() << " " << client.getName() << " " << client.getPassword() << " " << client.getBalance() << endl;
         ClientFile.close();
@@ -99,7 +98,6 @@ public:
         if (!Adminfile)
         {
             cout << "Unable to open file " << endl;
-            return;
         }
         Adminfile << admin.getId() << " " << admin.getName() << " " << admin.getPassword() << " " << admin.getSalary() << endl;
         Adminfile.close();
@@ -112,7 +110,6 @@ public:
         if (!Adminfile)
         {
             cout << "Unable to open file " << endl;
-            return;
         }
         string line;
         while (getline(Adminfile, line))
