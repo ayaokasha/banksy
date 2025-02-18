@@ -49,6 +49,7 @@ public:
         FileManager fm;
         fm.getAllClients();
     }
+
     static void ClearClientFile(string filename, string lastidfile)
     {
         ofstream ClientFile(filename, ios::trunc);
@@ -69,6 +70,18 @@ public:
     {
         FileManager fm;
         fm.getAllEmployees();
+    }
+
+
+ static void savelastEmployee(string filename, int id)
+    {
+        ofstream Employeefile(filename);
+        if (!Employeefile)
+        {
+            cout << "Error: Unable to open file " << endl;
+        }
+        Employeefile << id << endl;
+        Employeefile.close();
     }
 
     static void ClearEmployeeFile(string filename, string lastidfile)
