@@ -27,7 +27,32 @@ public:
     {
         employees.push_back(employee);
     }
+client* searchEmployee(int id)
+   {
+       for(auto& employee : employee){
+        if(employee.getId() == id){
+            return &employee;
+        }
+       }
+      return nullptr;
+   }
 
+ void editEmployee( int id, string name, string password, double salary){
+       Employee* employee = searchemployee(id);
+       if(employee != nullptr){
+        employee->setName(name);
+        employee->setPassword(password);
+        employee->setSalary(salery);
+       }
+       else{
+        cout <<"Employee not found" << endl;
+       }
+   }
+void listEmployee(){
+    if( employee.empty()){
+        cout << "No employee registered."<< endl;
+    }
+}
 client* searchclient(int id)
    {
        for(auto& client : clients){
