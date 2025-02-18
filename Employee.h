@@ -17,6 +17,7 @@ private:
     vector<Client> clients;
 
 public:
+    Employee() : Person(0, " ", " ") { salary = 0.0; }
     Employee(int id, const string &name, const string &password, double salary) : Person(id, name, password)
     {
         this->salary = salary;
@@ -33,28 +34,33 @@ public:
     void addClient(const Client &client)
     {
         clients.push_back(client);
-        cout << "client added successfully"<< endl;
+        cout << "client added successfully" << endl;
     }
-   client* searchclient(int id)
-   {
-       for(auto& client : clients){
-        if(client.getId() == id){
-            return &client;
+    client *searchclient(int id)
+    {
+        for (auto &client : clients)
+        {
+            if (client.getId() == id)
+            {
+                return &client;
+            }
         }
-       }
-      return nullptr;
-   }
-void editclient( int id, string name, string password, double balance){
-       Client* client = searchclient(id);
-       if(client != nullptr){
-        client->setName(name);
-        client->setPassword(password);
-        client->setBalance(balance);
-       }
-       else{
-        cout <<"Client not found" << endl;
-       }
-}
+        return nullptr;
+    }
+    void editclient(int id, string name, string password, double balance)
+    {
+        Client *client = searchclient(id);
+        if (client != nullptr)
+        {
+            client->setName(name);
+            client->setPassword(password);
+            client->setBalance(balance);
+        }
+        else
+        {
+            cout << "Client not found" << endl;
+        }
+    }
     void display() const override
     {
         Person::display();

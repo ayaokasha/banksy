@@ -18,8 +18,8 @@ using namespace std;
 
 int main()
 {
-    
-    //Admin 
+
+    // Admin
     Admin admin1(1, "Admin User one", "adminPass", 100);
     Admin admin2(2, "Admin User two", "adminPass", 10000);
     Admin admin3(3, "Admin User three", "adminPass", 10000);
