@@ -30,13 +30,14 @@ public:
 
         this->salary = salary;
     }
-
+    // client
     void addClient(const Client &client)
     {
         clients.push_back(client);
         cout << "client added successfully" << endl;
     }
-    client *searchclient(int id)
+
+    Client *searchclient(int id)
     {
         for (auto &client : clients)
         {
@@ -47,6 +48,7 @@ public:
         }
         return nullptr;
     }
+
     void editclient(int id, string name, string password, double balance)
     {
         Client *client = searchclient(id);
@@ -61,6 +63,7 @@ public:
             cout << "Client not found" << endl;
         }
     }
+    // display
     void display() const override
     {
         Person::display();

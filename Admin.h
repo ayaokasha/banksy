@@ -18,50 +18,13 @@ private:
 public:
     Admin() : Employee(0, " ", " ", 0.0) {}
     Admin(int id, const string &name, const string &password, double salary) : Employee(id, name, password, salary) {}
-
+    // client
     void addClient(const Client &client)
     {
         clients.push_back(client);
         cout << "client added successfully" << endl;
     }
-    void addEmployee(const Employee &employee)
-    {
-        employees.push_back(employee);
-    }
-    client *searchEmployee(int id)
-    {
-        for (auto &employee : employee)
-        {
-            if (employee.getId() == id)
-            {
-                return &employee;
-            }
-        }
-        return nullptr;
-    }
-
-    void editEmployee(int id, string name, string password, double salary)
-    {
-        Employee *employee = searchemployee(id);
-        if (employee != nullptr)
-        {
-            employee->setName(name);
-            employee->setPassword(password);
-            employee->setSalary(salery);
-        }
-        else
-        {
-            cout << "Employee not found" << endl;
-        }
-    }
-    void listEmployee()
-    {
-        if (employee.empty())
-        {
-            cout << "No employee registered." << endl;
-        }
-    }
-    client *searchclient(int id)
+    Client *searchclient(int id)
     {
         for (auto &client : clients)
         {
@@ -87,6 +50,46 @@ public:
             cout << "Client not found" << endl;
         }
     }
+    // employee
+    void addEmployee(const Employee &employee)
+    {
+        employees.push_back(employee);
+    }
+
+    Employee *searchEmployee(int id)
+    {
+        for (auto &employee : employees)
+        {
+            if (employee.getId() == id)
+            {
+                return &employee;
+            }
+        }
+        return nullptr;
+    }
+
+    void editEmployee(int id, string name, string password, double salary)
+    {
+        Employee *employee = searchEmployee(id);
+        if (employee != nullptr)
+        {
+            employee->setName(name);
+            employee->setPassword(password);
+            employee->setSalary(salary);
+        }
+        else
+        {
+            cout << "Employee not found" << endl;
+        }
+    }
+    void listEmployee()
+    {
+        if (employee.empty())
+        {
+            cout << "No employee registered." << endl;
+        }
+    }
+    // display
     void display() const override
     {
 
