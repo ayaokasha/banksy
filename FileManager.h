@@ -45,12 +45,13 @@ public:
         ClientFile.close();
         cout << "Client added successfully" << endl;
     }
-    void getAllClients() override
+     vector<string> getAllClients() override
     {
+        vector<string> clients;
         ifstream ClientFile("Client.txt");
         if (!ClientFile)
         {
-            cout << "UNable to open file" << endl;
+            cout << "Unable to open file" << endl;
         }
         string line;
         while (getline(ClientFile, line))
