@@ -33,16 +33,17 @@ public:
     void addClient(const Client &client)
     {
         clients.push_back(client);
-        cout << "client added sucessfully."<< endl;
+        cout << "client added successfully"<< endl;
     }
-client*searchclient(int id){
-    for(auto&client:clients){
-        if(client.id ==id){
+   client* searchClient(int id)
+   {
+       for(auto& client : clients){
+        if(client.getId() == id){
             return &client;
         }
-    }
-    return nullptr;
-}
+       }
+      return nullptr;
+   }
 void listclients(){
     if( clients.empty()){
         cout << "No clients registered."<< endl;
