@@ -89,6 +89,8 @@ public:
         {
             cout << "No employee registered." << endl;
         }
+        for(auto&employee:employeelist)
+            employee.display();
     }
     // display
     void display() const override
