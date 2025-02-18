@@ -44,11 +44,6 @@ public:
        }
       return nullptr;
    }
-void listclients(){
-    if( clients.empty()){
-        cout << "No clients registered."<< endl;
-    }
-}
 void editclient( int id, string name, string password, double balance){
        Client* client = searchclient(id);
        if(client != nullptr){
