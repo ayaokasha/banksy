@@ -51,6 +51,13 @@ public:
             cout << "Client not found" << endl;
         }
     }
+    void listClients(){
+        if(clientList.empty()){
+            cout << "No clients available" << endl;
+        }
+        for(auto &client : clientList)
+            client.display();
+    }
     // employee
     void addEmployee(const Employee &employee)
     {
