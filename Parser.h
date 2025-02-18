@@ -27,32 +27,35 @@ class Parser
         result.push_back(word);
         return result;
     }
-    static Client parsetToClient(string& line){
+    static Client parsetToClient(string &line)
+    {
         vector<string> data = split(line, ' ');
-        if(data.size() < 4){
+        if (data.size() < 4)
+        {
             cout << "Invalid input format for client" << endl;
-            return client();
+            return Client();
         }
         int id = stoi(data[0]);
         string name = data[1];
-        string password = data [2];
-        double balance = stof(data[4]);
-        return client(id , name , password , balance);
-    } 
-
-
- static Employee parsetToemployee(string& line){
-        vector<string> data = split(line, ' ');
-        if(data.size() < 3){
-            cout << "Invalid input format for employee" << endl;
-            return employee();
-        }
-        int id = stoi(data[0]);
-        string name = data[1];
-        string password = data [2];
+        string password = data[2];
         double balance = stof(data[3]);
-        return employee (id , name , password , balance);
-    } 
+        return Client(id, name, password, balance);
+    }
+
+    static Employee parsetToemployee(string &line)
+    {
+        vector<string> data = split(line, ' ');
+        if (data.size() < 3)
+        {
+            cout << "Invalid input format for employee" << endl;
+            return Employee();
+        }
+        int id = stoi(data[0]);
+        string name = data[1];
+        string password = data[2];
+        double balance = stof(data[3]);
+        return Employee(id, name, password, balance);
+    }
 
     static Admin parserToAdmin(string line)
     {

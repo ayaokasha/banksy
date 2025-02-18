@@ -2,7 +2,7 @@
 #define EMPLOYEE_H
 
 #include <iostream>
-#include<fstream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -33,33 +33,33 @@ public:
     void addClient(const Client &client)
     {
         clients.push_back(client);
-        cout << "client added sucessfully."<< endl;
+        cout << "client added sucessfully." << endl;
     }
-client*searchclient(int id){
-    for(auto&client:clients){
-        if(client.id ==id){
-            return &client;
-        }
-    }
-    return nullptr;
-}
-void listclients(){
-    if( clients.empty()){
-        cout << "No clients registered."<< endl;
-    }
-}
-void editclient( int id, string name,string password ,double balance){
-    client*client =searchclient(id);
-    if(client){
-        client->name = name;
-        client->password = password;
-        client->balance = balance;
-        cout << " client information updated." <<endl;
-    }
-    else{
-        cout << " client not found." <<endl;
-    }
-}
+    // client*searchclient(int id){
+    //     for(auto&client:clients){
+    //         if(client.id ==id){
+    //             return &client;
+    //         }
+    //     }
+    //     return nullptr;
+    // }
+    // void listclients(){
+    //     if( clients.empty()){
+    //         cout << "No clients registered."<< endl;
+    //     }
+    // }
+    // void editclient( int id, string name,string password ,double balance){
+    //     client*client =searchclient(id);
+    //     if(client){
+    //         client->name = name;
+    //         client->password = password;
+    //         client->balance = balance;
+    //         cout << " client information updated." <<endl;
+    //     }
+    //     else{
+    //         cout << " client not found." <<endl;
+    //     }
+    // }
 
     void display() const override
     {
