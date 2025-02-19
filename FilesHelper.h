@@ -17,6 +17,15 @@ class FilesHelper
 {
 public:
     // clinet
+    static void saveClient(string fileName, string lastFile)
+    {
+        string file = " Client.text";
+        ofstream ClientFile(file, ios::app);
+        if (!ClientFile)
+        {
+            cout << " unable to open file" << endl;
+        }
+    }
     static void savelastClient(string filename)
     {
         ofstream ClientFile(filename);
@@ -24,28 +33,21 @@ public:
         {
             cout << "Error: Unable to open file " << endl;
         }
-        ClientFile << 1 << endl;
+        ClientFile << 1;
         ClientFile.close();
     }
+
     static int getlastClient(string filename)
     {
         ifstream ClientFile(filename);
+        if (!ClientFile)
+        {
+            cout << "Error: Unable to open file " << endl;
+        }
         int id;
         ClientFile >> id;
         ClientFile.close();
         return id;
-    }
-    static void saveClient(Client c)
-    {
-        string file = "Client.txt";
-        ofstream ClientFile(file, ios::app);
-        if (!ClientFile)
-        {
-            cout << "unable to open file" << endl;
-        }
-
-        ClientFile << c.getId() << "," << c.getName() << "," << c.getPassword() << "," << c.getBalance() << endl;
-        ClientFile.close();
     }
     static void getClients()
     {
@@ -60,11 +62,13 @@ public:
         {
             cout << "Error: Unable to open file " << endl;
         }
-        savelastClient(lastidfile);
         ClientFile.close();
+        ofstream Id(lastidfile, ios::trunc);
+        Id << 0;
+        Id.close();
     }
     // employee
-    static void saveEmployee(string fileName, string lastFile, Employee e)
+    static void saveEmployee(string fileName, string lastFile)
     {
         string file = " employee.text";
         ofstream employeeFile(file, ios::app);
@@ -109,6 +113,9 @@ public:
         }
         savelastEmployee(lastidfile);
         Employeefile.close();
+        ofstream lId(lastidfile, ios::trunc);
+        lId << 0;
+        lId.close();
     }
     // admin
     static void savelastAdmin(string filename)
