@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 
 #include "Validation.h"
 #include "Person.h"
@@ -53,49 +54,44 @@ int main()
 
     Employee e1;
     e1.getId();
-    e1.setId(4);
+    e1.setId(2);
     e1.getName();
     e1.setName(Validation::enterName());
     e1.getPassword();
     e1.setPassword(Validation::enterPassword());
-    e1.getSalery();
-    e1.setSalery(Validation::enterSalery());
+    e1.getSalary();
+    e1.setSalary(Validation::enterSalary());
 
     Employee e2;
     e2.getId();
-    e2.setId(1);
+    e2.setId(3);
     e2.getName();
     e2.setName(Validation::enterName());
     e2.getPassword();
     e2.setPassword(Validation::enterPassword());
-    e2.getSalery();
-    e2.setSalery(Validation::enterSalery());
+    e2.getSalary();
+    e2.setSalary(Validation::enterSalary());
 
     Employee e3;
     e3.getId();
-    e3.setId(1);
+    e3.setId(5);
     e3.getName();
     e3.setName(Validation::enterName());
     e3.getPassword();
     e3.setPassword(Validation::enterPassword());
-    e3.getSalery();
-    e3.setSalery(Validation::enterSalery());
+    e3.getSalary();
+    e3.setSalary(Validation::enterSalary());
 
-    FileManager fm;
-    fm.addEmployee(e1);
-    fm.addEmployee(e2);
-    fm.addEmployee(e3);
-
-    fm.getAllEmployees();
-
-    cout << "-------------------" << endl;
+    FileManager f;
+    f.addEmployee(e1);
+    f.addEmployee(e2);
+    f.addEmployee(e3);
 
     cout << "All Employee:" << endl;
-
-    fm.getAllEmployees();
+    f.getAllEmployees();
     cout << "-------------------" << endl;
 
-    FilesHelper::savelastEmployee("EmployeeLast.txt");
+    FilesHelper::savelastEmployee("EmployeeLast.txt" ,2);
 
     int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
     cout << "Last Employee ID: " << lastEmployeeId << endl;
@@ -104,7 +100,7 @@ int main()
     FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
     cout << "Employee file cleared and last ID reset." << endl;
     cout << "All Employee after clearing:" << endl;
-    fm.getAllEmployees();
+    f.getAllEmployees();
     cout << "-------------------" << endl;
 
     // Admin
@@ -131,13 +127,13 @@ int main()
     admin2.getSalary();
     admin2.setSalary(Validation::enterSalary());
 
-    FileManager fm;
-    fm.addAdmin(admin1);
-    fm.addAdmin(admin2);
+    FileManager m;
+    m.addAdmin(admin1);
+    m.addAdmin(admin2);
     cout << "-------------------" << endl;
 
     cout << "All Admins:" << endl;
-    fm.getAllAdmins();
+    m.getAllAdmins();
     cout << "-------------------" << endl;
 
     FilesHelper::savelastAdmin("AdminLast.txt");
@@ -149,6 +145,6 @@ int main()
     FilesHelper::ClearAdminFile("admin.txt", "AdminLast.txt");
     cout << "Admins file cleared and last ID reset." << endl;
     cout << "All Admins after clearing:" << endl;
-    fm.getAllAdmins();
+    m.getAllAdmins();
     cout << "-------------------" << endl;
 }
