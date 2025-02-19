@@ -72,8 +72,7 @@ public:
         fm.getAllEmployees();
     }
 
-
- static void savelastEmployee(string filename, int id)
+    static void savelastEmployee(string filename, int id)
     {
         ofstream Employeefile(filename);
         if (!Employeefile)

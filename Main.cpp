@@ -45,13 +45,13 @@ int main()
 
     fm.getAllClients();
 
-    FilesHelper::savelastClient("ClientLast.txt" ,4 );
+    FilesHelper::savelastClient("ClientLast.txt", 4);
 
     FilesHelper::ClearClientFile("Client.txt", "lastIdClient.xxt");
 
-    //EMPLOYEE
-    
- Employee e1;
+    // EMPLOYEE
+
+    Employee e1;
     e1.getId();
     e1.setId(4);
     e1.getName();
@@ -71,8 +71,7 @@ int main()
     e2.getSalery();
     e2.setSalery(Validation::enterSalery());
 
-
-Employee e3;
+    Employee e3;
     e3.getId();
     e3.setId(1);
     e3.getName();
@@ -89,11 +88,11 @@ Employee e3;
 
     fm.getAllEmployee();
 
-cout << "-------------------" << endl;
+    cout << "-------------------" << endl;
 
     cout << "All Employee:" << endl;
-   
-      fm.getAllEmployee();
+
+    fm.getAllEmployee();
     cout << "-------------------" << endl;
 
     FilesHelper::savelastEmployee("EmployeeLast.txt");
@@ -107,7 +106,6 @@ cout << "-------------------" << endl;
     cout << "All Employee after clearing:" << endl;
     fm.getAllEmployee();
     cout << "-------------------" << endl;
-}
 
     // Admin
     Admin admin1;
