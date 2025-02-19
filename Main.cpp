@@ -29,24 +29,34 @@ int main()
     c1.getBalance();
     c1.setBalance(Validation::enterBalance());
 
-    Client c2;
-    c2.getId();
-    c2.getName();
-    c2.setName(Validation::enterName());
-    c2.getPassword();
-    c2.setPassword(Validation::enterPassword());
-    c2.getBalance();
-    c2.setBalance(Validation::enterBalance());
+    // Client c2;
+    // c2.getId();
+    // c2.getName();
+    // c2.setName(Validation::enterName());
+    // c2.getPassword();
+    // c2.setPassword(Validation::enterPassword());
+    // c2.getBalance();
+    // c2.setBalance(Validation::enterBalance());
 
     FileManager fm;
     fm.addClient(c1);
-    fm.addClient(c2);
+    // fm.addClient(c2);
 
+    cout << "All Clint:" << endl;
     fm.getAllClients();
+    cout << "-------------------" << endl;
 
-    FilesHelper::savelastClient("ClientLast.txt");
+    FilesHelper::savelastClient("ClintLast.txt");
 
-    FilesHelper::ClearClientFile("Client.txt", "lastIdClient.xxt");
+    int lastClintId = FilesHelper::getlastClient("ClintLast.txt");
+    cout << "Last Clint ID: " << lastClintId << endl;
+    cout << "-------------------" << endl;
+
+    FilesHelper::ClearClientFile("Clint.txt", "ClintLast.txt");
+    cout << "Clint file cleared and last ID reset." << endl;
+    cout << "All Clint after clearing:" << endl;
+    fm.getAllClients();
+    cout << "-------------------" << endl;
 
     // EMPLOYEE
 
@@ -59,28 +69,28 @@ int main()
     e1.getSalary();
     e1.setSalary(Validation::enterSalary());
 
-    Employee e2;
-    e2.getId();
-    e2.getName();
-    e2.setName(Validation::enterName());
-    e2.getPassword();
-    e2.setPassword(Validation::enterPassword());
-    e2.getSalary();
-    e2.setSalary(Validation::enterSalary());
+    // Employee e2;
+    // e2.getId();
+    // e2.getName();
+    // e2.setName(Validation::enterName());
+    // e2.getPassword();
+    // e2.setPassword(Validation::enterPassword());
+    // e2.getSalary();
+    // e2.setSalary(Validation::enterSalary());
 
-    Employee e3;
-    e3.getId();
-    e3.getName();
-    e3.setName(Validation::enterName());
-    e3.getPassword();
-    e3.setPassword(Validation::enterPassword());
-    e3.getSalary();
-    e3.setSalary(Validation::enterSalary());
+    // Employee e3;
+    // e3.getId();
+    // e3.getName();
+    // e3.setName(Validation::enterName());
+    // e3.getPassword();
+    // e3.setPassword(Validation::enterPassword());
+    // e3.getSalary();
+    // e3.setSalary(Validation::enterSalary());
 
     FileManager f;
     f.addEmployee(e1);
-    f.addEmployee(e2);
-    f.addEmployee(e3);
+    // f.addEmployee(e2);
+    // f.addEmployee(e3);
 
     cout << "All Employee:" << endl;
     f.getAllEmployees();
@@ -110,21 +120,21 @@ int main()
     admin1.getSalary();
     admin1.setSalary(Validation::enterSalary());
 
-    Admin admin2;
-    admin2.getId();
+    // Admin admin2;
+    // admin2.getId();
 
-    admin2.getName();
-    admin2.setName(Validation::enterName());
+    // admin2.getName();
+    // admin2.setName(Validation::enterName());
 
-    admin2.getPassword();
-    admin2.setPassword(Validation::enterPassword());
+    // admin2.getPassword();
+    // admin2.setPassword(Validation::enterPassword());
 
-    admin2.getSalary();
-    admin2.setSalary(Validation::enterSalary());
+    // admin2.getSalary();
+    // admin2.setSalary(Validation::enterSalary());
 
     FileManager m;
     m.addAdmin(admin1);
-    m.addAdmin(admin2);
+    // m.addAdmin(admin2);
     cout << "-------------------" << endl;
 
     cout << "All Admins:" << endl;
