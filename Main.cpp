@@ -18,6 +18,37 @@ using namespace std;
 
 int main()
 {
+    // Client
+    Client c1;
+    c1.getId();
+    c1.setId(4);
+    c1.getName();
+    c1.setName(Validation::enterName());
+    c1.getPassword();
+    c1.setPassword(Validation::enterPassword());
+    c1.getBalance();
+    c1.setBalance(Validation::enterBalance());
+
+    Client c2;
+    c2.getId();
+    c2.setId(1);
+    c2.getName();
+    c2.setName(Validation::enterName());
+    c2.getPassword();
+    c2.setPassword(Validation::enterPassword());
+    c2.getBalance();
+    c2.setBalance(Validation::enterBalance());
+
+    FileManager fm;
+    fm.addClient(c1);
+    fm.addClient(c2);
+
+    fm.getAllClients();
+
+    FilesHelper::savelastClient("ClientLast.txt" ,4 );
+
+    FilesHelper::ClearClientFile("Client.txt", "lastIdClient.xxt");
+
     //EMPLOYEE
     
 Employee employee1( "Mahmoud",123,"password156",5000);
