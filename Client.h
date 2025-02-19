@@ -15,7 +15,7 @@ private:
 
 public:
     Client() : Person(0, " ", " ") { balance = 0.0; }
-    Client(string n, int i, string p, double b) : Person(i, n, p) { balance = b; }
+    Client(int i, string n, string p, double b) : Person(i, n, p) { balance = b; }
     void setBalance(double balance)
     {
 
