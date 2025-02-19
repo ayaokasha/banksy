@@ -90,15 +90,14 @@ public:
             cout << "Employee not found" << endl;
         }
     }
-    void listEmployee()
-    {
-        if (employee.empty())
-        {
-            cout << "No employee registered." << endl;
+ void listEmployee(){
+        if(employee.empty()){
+            cout << "No  employee available" << endl;
         }
-        for(auto&employee:employeelist)
+        for(auto &employee : employee)
             employee.display();
     }
+
     // display
     void display() const override
     {
