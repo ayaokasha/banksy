@@ -17,11 +17,14 @@ class FilesHelper
 {
 public:
     // clinet
-    static void savelastClient(string filename, int id)
+    static void savelastClient(string filename)
     {
-
-        ofstream ClientFile(filename, ios::app);
-        ClientFile << id << endl;
+        ofstream ClientFile(filename);
+        if (!ClientFile)
+        {
+            cout << "Error: Unable to open file " << endl;
+        }
+        ClientFile << 1 << endl;
         ClientFile.close();
     }
     static int getlastClient(string filename)
@@ -53,8 +56,12 @@ public:
     static void ClearClientFile(string filename, string lastidfile)
     {
         ofstream ClientFile(filename, ios::trunc);
+        if (!ClientFile)
+        {
+            cout << "Error: Unable to open file " << endl;
+        }
+        savelastClient(lastidfile);
         ClientFile.close();
-        savelastClient(lastidfile, 0);
     }
     // employee
     static void saveEmployee(string fileName, string lastFile, Employee e)
@@ -82,22 +89,26 @@ public:
         return id;
     }
 
-    static void savelastEmployee(string filename, int id)
+    static void savelastEmployee(string filename)
     {
         ofstream Employeefile(filename);
         if (!Employeefile)
         {
             cout << "Error: Unable to open file " << endl;
         }
-        Employeefile << id << endl;
+        Employeefile << 1 << endl;
         Employeefile.close();
     }
 
     static void ClearEmployeeFile(string filename, string lastidfile)
     {
         ofstream Employeefile(filename, ios::trunc);
+        if (!Employeefile)
+        {
+            cout << "Error: Unable to open file " << endl;
+        }
+        savelastEmployee(lastidfile);
         Employeefile.close();
-        savelastEmployee(lastidfile, 0);
     }
     // admin
     static void savelastAdmin(string filename)

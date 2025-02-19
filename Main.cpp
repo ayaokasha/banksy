@@ -22,7 +22,6 @@ int main()
     // Client
     Client c1;
     c1.getId();
-    c1.setId(4);
     c1.getName();
     c1.setName(Validation::enterName());
     c1.getPassword();
@@ -32,7 +31,6 @@ int main()
 
     Client c2;
     c2.getId();
-    c2.setId(1);
     c2.getName();
     c2.setName(Validation::enterName());
     c2.getPassword();
@@ -46,7 +44,7 @@ int main()
 
     fm.getAllClients();
 
-    FilesHelper::savelastClient("ClientLast.txt", 4);
+    FilesHelper::savelastClient("ClientLast.txt");
 
     FilesHelper::ClearClientFile("Client.txt", "lastIdClient.xxt");
 
@@ -54,7 +52,6 @@ int main()
 
     Employee e1;
     e1.getId();
-    e1.setId(2);
     e1.getName();
     e1.setName(Validation::enterName());
     e1.getPassword();
@@ -64,7 +61,6 @@ int main()
 
     Employee e2;
     e2.getId();
-    e2.setId(3);
     e2.getName();
     e2.setName(Validation::enterName());
     e2.getPassword();
@@ -74,7 +70,6 @@ int main()
 
     Employee e3;
     e3.getId();
-    e3.setId(5);
     e3.getName();
     e3.setName(Validation::enterName());
     e3.getPassword();
@@ -91,7 +86,7 @@ int main()
     f.getAllEmployees();
     cout << "-------------------" << endl;
 
-    FilesHelper::savelastEmployee("EmployeeLast.txt" ,2);
+    FilesHelper::savelastEmployee("EmployeeLast.txt");
 
     int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
     cout << "Last Employee ID: " << lastEmployeeId << endl;
