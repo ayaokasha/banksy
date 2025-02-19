@@ -52,10 +52,10 @@ public:
         }
     }
     void listClients(){
-        if(clientList.empty()){
+        if(clients.empty()){
             cout << "No clients available" << endl;
         }
-        for(auto &client : clientList)
+        for(auto &client : clients)
             client.display();
     }
     // employee
