@@ -62,6 +62,7 @@ public:
     void addEmployee(const Employee &employee)
     {
         employees.push_back(employee);
+        cout << "client added successfully" << endl;
     }
 
     Employee *searchEmployee(int id)
@@ -89,15 +90,14 @@ public:
         {
             cout << "Employee not found" << endl;
         }
-    }
- void listEmployee(){
-        if(employee.empty()){
+    } 
+   void listEmployees(){
+        if(employees.empty()){
             cout << "No  employee available" << endl;
         }
-        for(auto &employee : employee)
+        for(auto &employee : employees)
             employee.display();
     }
-
     // display
     void display() const override
     {
