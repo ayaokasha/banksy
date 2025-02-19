@@ -51,40 +51,62 @@ int main()
 
     //EMPLOYEE
     
-Employee employee1( "Mahmoud",123,"password156",5000);
-     Employee employee2( "Ahmed",122,"password234",6000);
-     Employee employee3( "Ashraf",121,"password111",7000);
-     Employee employee4( "Mohamed",120,"password362",8000);
-    
+ Employee e1;
+    e1.getId();
+    e1.setId(4);
+    e1.getName();
+    e1.setName(Validation::enterName());
+    e1.getPassword();
+    e1.setPassword(Validation::enterPassword());
+    e1.getSalery();
+    e1.setSalery(Validation::enterSalery());
+
+    Employee e2;
+    e2.getId();
+    e2.setId(1);
+    e2.getName();
+    e2.setName(Validation::enterName());
+    e2.getPassword();
+    e2.setPassword(Validation::enterPassword());
+    e2.getSalery();
+    e2.setSalery(Validation::enterSalery());
+
+
+Employee e3;
+    e3.getId();
+    e3.setId(1);
+    e3.getName();
+    e3.setName(Validation::enterName());
+    e3.getPassword();
+    e3.setPassword(Validation::enterPassword());
+    e3.getSalery();
+    e3.setSalery(Validation::enterSalery());
+
     FileManager fm;
-    fm.addEmployee( employee1);
-    fm.addEmployee( employee2);
-    fm.addEmployee( employee3);
-    fm.addEmployee( employee4);
+    fm.addEmployee(e1);
+    fm.addEmployee(e2);
+    fm.addEmployee(e3);
 
-    fm.searchEmployee( employee2);
-    
-fm.listEmployee( employee1);
- fm.listEmployee( employee3);
+    fm.getAllEmployee();
 
-fm.editEmployee( employee2);
-fm.editEmployee( employee4);
-     
-    cout<< "--------------------------" << endl;
-    cout << " All Employee" << endl;
-
-FilesHelper::savelastEmployee("EmployeeLast.txt");
-
-int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
-cout << "Last Employee ID: " << lastEmployeeId << endl;
 cout << "-------------------" << endl;
 
-FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
-cout << "Employee file cleared and last ID reset." << endl;
-cout << "All Employee after clearing:" << endl;
-fm.getAllEmployee();
-cout << "------------------" << endl;
-    
+    cout << "All Employee:" << endl;
+   
+      fm.getAllEmployee();
+    cout << "-------------------" << endl;
+
+    FilesHelper::savelastEmployee("EmployeeLast.txt");
+
+    int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
+    cout << "Last Employee ID: " << lastEmployeeId << endl;
+    cout << "-------------------" << endl;
+
+    FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
+    cout << "Employee file cleared and last ID reset." << endl;
+    cout << "All Employee after clearing:" << endl;
+    fm.getAllEmployee();
+    cout << "-------------------" << endl;
 }
 
     // Admin
