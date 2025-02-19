@@ -86,13 +86,13 @@ int main()
     fm.addEmployee(e2);
     fm.addEmployee(e3);
 
-    fm.getAllEmployee();
+    fm.getAllEmployees();
 
     cout << "-------------------" << endl;
 
     cout << "All Employee:" << endl;
 
-    fm.getAllEmployee();
+    fm.getAllEmployees();
     cout << "-------------------" << endl;
 
     FilesHelper::savelastEmployee("EmployeeLast.txt");
@@ -104,7 +104,7 @@ int main()
     FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
     cout << "Employee file cleared and last ID reset." << endl;
     cout << "All Employee after clearing:" << endl;
-    fm.getAllEmployee();
+    fm.getAllEmployees();
     cout << "-------------------" << endl;
 
     // Admin

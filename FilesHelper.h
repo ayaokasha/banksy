@@ -66,10 +66,20 @@ public:
             cout << " unable to open file" << endl;
         }
     }
+
     static void getemployee()
     {
         FileManager fm;
         fm.getAllEmployees();
+    }
+
+    static int getlastEmployee(string filename)
+    {
+        ifstream EmployeeFile(filename);
+        int id;
+        EmployeeFile >> id;
+        EmployeeFile.close();
+        return id;
     }
 
     static void savelastEmployee(string filename, int id)
