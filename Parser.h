@@ -1,13 +1,13 @@
 #ifndef PARSE_H
 #define PARSE_H
 
-#include "Client.h"
-#include "Employee.h"
-#include "Admin.h"
-
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
 
 using namespace std;
 class Parser
@@ -32,7 +32,7 @@ public:
         result.push_back(word);
         return result;
     }
-    static Client parsetToClient(string &line)
+    static Client parseToClient(const string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
@@ -44,7 +44,7 @@ public:
         return client;
     }
 
-    static Employee parsetToemployee(string &line)
+    static Employee parseToemployee(string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
@@ -56,7 +56,7 @@ public:
         return employee;
     }
 
-    static Admin parserToAdmin(string line)
+    static Admin parseToAdmin(string line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
