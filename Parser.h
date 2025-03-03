@@ -1,6 +1,10 @@
 #ifndef PARSE_H
 #define PARSE_H
 
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,6 +12,7 @@
 using namespace std;
 class Parser
 {
+public:
     static vector<string> split(string line, char delimiter)
     {
         vector<string> result;
@@ -47,7 +52,7 @@ class Parser
             cout << "Invalid input format for employee" << endl;
             return Employee();
         }
-        Admin employee(stoi(data[0]), data[1], data[2], stof(data[3]));
+        Employee employee(stoi(data[0]), data[1], data[2], stof(data[3]));
         return employee;
     }
 
