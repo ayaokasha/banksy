@@ -54,6 +54,7 @@ public:
     void listClients(){
         if(clients.empty()){
             cout << "No clients available" << endl;
+            return;
         }
         for(auto &client : clients)
             client.display();
@@ -62,7 +63,7 @@ public:
     void addEmployee(const Employee &employee)
     {
         employees.push_back(employee);
-        cout << "client added successfully" << endl;
+        cout << "Employee added successfully" << endl;
     }
 
     Employee *searchEmployee(int id)
@@ -94,6 +95,7 @@ public:
    void listEmployees(){
         if(employees.empty()){
             cout << "No  employee available" << endl;
+            return;
         }
         for(auto &employee : employees)
             employee.display();
