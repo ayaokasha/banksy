@@ -36,7 +36,7 @@ public:
         cout << "client added successfully" << endl;
     }
 
-    Client *searchclient(int id)
+    Client* searchclient(int id)
     {
         for (auto &client : clients)
         {
