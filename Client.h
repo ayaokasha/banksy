@@ -17,9 +17,8 @@ public:
     Client() : Person(0, " ", " ") { balance = 0.0; }
     Client(int i, string n, string p, double b) : Person(i, n, p) { balance = b; }
     void setBalance(double balance)
-    {
-
-        this->balance = balance;
+    { 
+           this->balance = balance;
     }
     double getBalance() { return balance; }
 

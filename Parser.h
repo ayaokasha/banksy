@@ -5,9 +5,14 @@
 #include <string>
 #include <vector>
 
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
+
 using namespace std;
 class Parser
 {
+public:
     static vector<string> split(string line, char delimiter)
     {
         vector<string> result;
@@ -27,7 +32,7 @@ class Parser
         result.push_back(word);
         return result;
     }
-    static Client parsetToClient(string &line)
+    static Client parseToClient(const string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
@@ -39,7 +44,7 @@ class Parser
         return client;
     }
 
-    static Employee parsetToemployee(string &line)
+    static Employee parseToemployee(string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
@@ -47,11 +52,11 @@ class Parser
             cout << "Invalid input format for employee" << endl;
             return Employee();
         }
-        Admin employee(stoi(data[0]), data[1], data[2], stof(data[3]));
+        Employee employee(stoi(data[0]), data[1], data[2], stof(data[3]));
         return employee;
     }
 
-    static Admin parserToAdmin(string line)
+    static Admin parseToAdmin(string line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
