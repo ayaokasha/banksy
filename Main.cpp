@@ -11,6 +11,8 @@
 #include "FilesHelper.h"
 #include "FileManager.h"
 
+#include "AdminManager.h"
+
 #include <vector>
 #include <string>
 #include <fstream>
