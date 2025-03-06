@@ -44,7 +44,7 @@ public:
         return client;
     }
 
-    static Employee parseToemployee(string &line)
+    static Employee parseToemployee(const string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
@@ -56,7 +56,7 @@ public:
         return employee;
     }
 
-    static Admin parseToAdmin(string line)
+    static Admin parseToAdmin(const string &line)
     {
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
