@@ -32,9 +32,9 @@ public:
 
         this->password = password;
     }
-    int getId() { return id; }
-    string getName() { return name; }
-    string getPassword() { return password; }
+    int getId() const { return id; }
+    string getName() const { return name; }
+    string getPassword() const { return password; }
     virtual void display() const
     {
         cout << "ID: " << id << endl;

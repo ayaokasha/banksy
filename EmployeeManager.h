@@ -1,31 +1,31 @@
-#ifndef EMPLOYEEMANAGER_H
-#define EMPLOYEEMANAGER_H
+#ifndef BANKSYSTEM_H
+#define BANKSYSTEM_H
+
 #include <iostream>
 #include <vector>
-#include < string>
-#include <iomanip>
+#include <string>
 
+#include "Client.h"
 #include "Employee.h"
-#include  "Client.h"
-#include "FileManager.h"
-#include "FilesHelper.h"
-#include "Validation.h"
+
 using namespace std;
 
-class EmployeeManager {
+class EmployeeManager
+{
 public:
-    static void printEmployeeMenu() {
-        cout << "Employee Menu:" endl;
-        cout << "1. Add Client" endl;
-        cout << "2. List Clients"endl;
-        cout << "3. Search Client"endl;
-        cout << "4. Edit Client"endl;
-        cout << "5. My Info"endl;
-        cout << "6. Logout"endl;
+    static void printEmployeeMenu()
+    {
+        cout << "Employee Menu:\n";
+        cout << "1. Add Client\n";
+        cout << "2. List Clients\n";
+        cout << "3. Search Client\n";
+        cout << "4. Edit Client\n";
+        cout << "5. Logout\n";
         cout << "Enter your choice: ";
     }
 
-    static void newClient(Employee* employee, vector<Client>& clients) {
+    static void newClient(vector<Client> &clients)
+    {
         int id;
         string name, password;
         double balance;
@@ -39,86 +39,100 @@ public:
         cout << "Enter initial balance: ";
         cin >> balance;
 
-        clients.push_back(id, name, password, balance);
-        cout << "Client added successfully."endl;
+        clients.push_back(Client(id, name, password, balance));
+        cout << "Client added successfully.\n";
     }
 
-    static void listAllClients(Employee* employee, const vector<Client>& clients) {
-        cout << "Client List:" endl;
-        for (const Client& client : clients) {
-            cout << "ID: " << client.id << ", Name: " << client.name << ", Balance: $" << fixed << setprecision(2) << client.balance << endl;
+    static void listAllClients(const vector<Client> &clients)
+    {
+        cout << "Client List:\n";
+        for (const Client &client : clients)
+        {
+            cout << "ID: " << client.getId()
+                 << ", Name: " << client.getName()
+                 << ", Balance: $" << client.getBalance()
+                 << endl;
         }
     }
 
-    static void searchForClient(Employee* employee, const vector<Client>& clients) {
+    static void searchForClient(const vector<Client> &clients)
+    {
         int id;
         cout << "Enter client ID to search: ";
         cin >> id;
 
-        for (const Client& client : clients) {
-            if (client.id == id) {
-                cout << "ID: " << client.id << ", Name: " << client.name << ", Balance: $" << fixed << setprecision(2) << client.balance << endl;
+        for (const Client &client : clients)
+        {
+            if (client.getId() == id)
+            {
+                cout << "ID: " << client.getId()
+                     << ", Name: " << client.getName()
+                     << ", Balance: " << client.getBalance()
+                     << endl;
                 return;
             }
         }
-        cout << "Client not found." endl;
+        cout << "Client not found.\n";
     }
 
-    static void editClientInfo(Employee* employee, vector<Client>& clients) {
+    static void editClientInfo(vector<Client> &clients)
+    {
         int id;
         cout << "Enter client ID to edit: ";
         cin >> id;
 
-        for (Client& client : clients) {
-            if (client.id == id) {
+        for (Client &client : clients)
+        {
+            if (client.getId() == id)
+            {
+                string newName, newPassword;
+                double newBalance;
+
                 cout << "Enter new name: ";
-                cin >> client.name;
+                cin >> newName;
                 cout << "Enter new password: ";
-                cin >> client.password;
+                cin >> newPassword;
                 cout << "Enter new balance: ";
-                cin >> client.balance;
-                cout << "Client info updated successfully."endl;
+                cin >> newBalance;
+
+                client.setName(newName);
+                client.setPassword(newPassword);
+                client.setBalance(newBalance);
+
+                cout << "Client info updated successfully.\n";
                 return;
             }
         }
-        cout << "Client not found."endl;
+        cout << "Client not found.\n";
     }
 
-    static Employee* login(int id, string password, vector<Employee>& employees) {
-        for (Employee& employee : employees) {
-            if (employee.id == id && employee.password == password) {
-                return &employee;
-            }
-        }
-        return nullptr;
-    }
-    static bool employeeOptions(Employee* employee, vector<Client>& clients, vector<Employee>& employees) {
+    static bool employeeOptions(vector<Client> &clients)
+    {
         int choice;
         printEmployeeMenu();
         cin >> choice;
 
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
-            newClient(employee, clients);
+            newClient(clients);
             break;
         case 2:
-            listAllClients(employee, clients);
+            listAllClients(clients);
             break;
         case 3:
-            searchForClient(employee, clients);
+            searchForClient(clients);
             break;
         case 4:
-            editClientInfo(employee, clients);
+            editClientInfo(clients);
             break;
         case 5:
-            cout << "ID: " << employee->id << ", Name: " << employee->name << ", Salary: $" << fixed << setprecision(2) << employee->salary << endl;
-            break;
-        case 6:
             return false;
         default:
-            cout << "Invalid choice."endl;
+            cout << "Invalid choice.\n";
         }
         return true;
     }
 };
+
 #endif
