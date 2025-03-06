@@ -61,7 +61,7 @@ public:
         vector<string> data = split(line, ' ');
         if (data.size() < 4)
         {
-            cout << "Invalid input format for employee" << endl;
+            cout << "Invalid input format for admin" << endl;
             return Admin();
         }
         Admin admin(stoi(data[0]), data[1], data[2], stof(data[3]));
