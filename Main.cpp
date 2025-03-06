@@ -1,5 +1,6 @@
 #include <iostream>
-#include <iostream>
+#include <vector>
+#include <string>
 
 #include "Validation.h"
 #include "Person.h"
@@ -10,175 +11,91 @@
 #include "Interface.h"
 #include "FilesHelper.h"
 #include "FileManager.h"
-
 #include "AdminManager.h"
-
-#include <vector>
-#include <string>
-#include <fstream>
+#include "ClientManager.h"
+#include "EmployeeManager.h"
+#include "Screen.h"
 
 using namespace std;
 
 int main()
 {
- Admin admin(1, "Basmala","7004");
-    
-    Employee employee(23, "Israa" , 6565);
-    
-    int adminID;
-    string password;
-    // Client
+    Screen::showMainScreen();
 
-    int id;
-    string password;
+    vector<Client> clients;
+    vector<Employee> employees;
+    vector<Admin> admins;
 
-    cout << "Welcome to the Bank System" << endl;
-    cout << "Enter your ID: " << endl;
-    cin >> id;
-    cout << "Enter your password: " << endl;
-    cin >> password;
+    admins.push_back(Admin(1, "basmala", "admin123"));
+    employees.push_back(Employee(101, "ayaaaa", "pass123", 5000.0));
+    clients.push_back(Client(201, "nadaaaa", "client123", 1500.0));
 
-    Client c1 = ClientManager::login(id, password);
+    while (true)
+    {
+        int userType;
+        cout << "\nWelcome to the Bank System\n";
+        cout << "1. Admin Login\n";
+        cout << "2. Employee Login\n";
+        cout << "3. Client Login\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> userType;
 
-    if(c1.getId() != 0){
-        cout << "Access Granted" << endl;
-        ClientManager::printClientMenu(c1);
+        if (userType == 4)
+            break;
+
+        int id;
+        string password;
+        cout << "Enter your ID: ";
+        cin >> id;
+        cout << "Enter your password: ";
+        cin >> password;
+
+        if (userType == 1)
+        {
+            for (Admin &admin : admins)
+            {
+                if (admin.getId() == id && admin.getPassword() == password)
+                {
+                    cout << "Admin Access Granted!\n";
+                    while (AdminManager::adminOptions(employees, clients))
+                        ;
+                    break;
+                }
+            }
+            cout << "Invalid Admin Credentials!\n";
+        }
+        else if (userType == 2)
+        {
+            for (Employee &emp : employees)
+            {
+                if (emp.getId() == id && emp.getPassword() == password)
+                {
+                    cout << "Employee Access Granted!\n";
+                    while (EmployeeManager::employeeOptions(clients))
+                        ;
+                    break;
+                }
+            }
+            cout << "Invalid Employee Credentials!\n";
+        }
+        else if (userType == 3)
+        {
+            for (Client &client : clients)
+            {
+                if (client.getId() == id && client.getPassword() == password)
+                {
+                    cout << "Client Access Granted!\n";
+                    ClientManager::printClientMenu(client);
+                    break;
+                }
+            }
+            cout << "Invalid Client Credentials!\n";
+        }
+        else
+        {
+            cout << "Invalid choice. Try again.\n";
+        }
     }
-    else{
-        cout << "Access Denied" << endl;
-    }
-    
-    // Client
-    Client c1;
-    c1.getId();
-    c1.getName();
-    c1.setName(Validation::enterName());
-    c1.getPassword();
-    c1.setPassword(Validation::enterPassword());
-    c1.getBalance();
-    c1.setBalance(Validation::enterBalance());
-
-    // Client c2;
-    // c2.getId();
-    // c2.getName();
-    // c2.setName(Validation::enterName());
-    // c2.getPassword();
-    // c2.setPassword(Validation::enterPassword());
-    // c2.getBalance();
-    // c2.setBalance(Validation::enterBalance());
-
-    FileManager fm;
-    fm.addClient(c1);
-    // fm.addClient(c2);
-
-    cout << "All Clint:" << endl;
-    fm.getAllClients();
-    cout << "-------------------" << endl;
-
-    FilesHelper::savelastClient("ClintLast.txt");
-
-    int lastClintId = FilesHelper::getlastClient("ClintLast.txt");
-    cout << "Last Clint ID: " << lastClintId << endl;
-    cout << "-------------------" << endl;
-
-    FilesHelper::ClearClientFile("Clint.txt", "ClintLast.txt");
-    cout << "Clint file cleared and last ID reset." << endl;
-    cout << "All Clint after clearing:" << endl;
-    fm.getAllClients();
-    cout << "-------------------" << endl;
-
-    // EMPLOYEE
-
-    Employee e1;
-    e1.getId();
-    e1.getName();
-    e1.setName(Validation::enterName());
-    e1.getPassword();
-    e1.setPassword(Validation::enterPassword());
-    e1.getSalary();
-    e1.setSalary(Validation::enterSalary());
-
-    // Employee e2;
-    // e2.getId();
-    // e2.getName();
-    // e2.setName(Validation::enterName());
-    // e2.getPassword();
-    // e2.setPassword(Validation::enterPassword());
-    // e2.getSalary();
-    // e2.setSalary(Validation::enterSalary());
-
-    // Employee e3;
-    // e3.getId();
-    // e3.getName();
-    // e3.setName(Validation::enterName());
-    // e3.getPassword();
-    // e3.setPassword(Validation::enterPassword());
-    // e3.getSalary();
-    // e3.setSalary(Validation::enterSalary());
-
-    FileManager f;
-    f.addEmployee(e1);
-    // f.addEmployee(e2);
-    // f.addEmployee(e3);
-
-    cout << "All Employee:" << endl;
-    f.getAllEmployees();
-    cout << "-------------------" << endl;
-
-    FilesHelper::savelastEmployee("EmployeeLast.txt");
-
-    int lastEmployeeId = FilesHelper::getlastEmployee("EmployeeLast.txt");
-    cout << "Last Employee ID: " << lastEmployeeId << endl;
-    cout << "-------------------" << endl;
-
-    FilesHelper::ClearEmployeeFile("employee.txt", "EmployeeLast.txt");
-    cout << "Employee file cleared and last ID reset." << endl;
-    cout << "All Employee after clearing:" << endl;
-    f.getAllEmployees();
-    cout << "-------------------" << endl;
-
-    // Admin
-    Admin admin1;
-    admin1.getId();
-    admin1.getName();
-    admin1.setName(Validation::enterName());
-
-    admin1.getPassword();
-    admin1.setPassword(Validation::enterPassword());
-
-    admin1.getSalary();
-    admin1.setSalary(Validation::enterSalary());
-
-    // Admin admin2;
-    // admin2.getId();
-
-    // admin2.getName();
-    // admin2.setName(Validation::enterName());
-
-    // admin2.getPassword();
-    // admin2.setPassword(Validation::enterPassword());
-
-    // admin2.getSalary();
-    // admin2.setSalary(Validation::enterSalary());
-
-    FileManager m;
-    m.addAdmin(admin1);
-    // m.addAdmin(admin2);
-    cout << "-------------------" << endl;
-
-    cout << "All Admins:" << endl;
-    m.getAllAdmins();
-    cout << "-------------------" << endl;
-
-    FilesHelper::savelastAdmin("AdminLast.txt");
-
-    int lastAdminId = FilesHelper::getlastAdmin("AdminLast.txt");
-    cout << "Last Admin ID: " << lastAdminId << endl;
-    cout << "-------------------" << endl;
-
-    FilesHelper::ClearAdminFile("admin.txt", "AdminLast.txt");
-    cout << "Admins file cleared and last ID reset." << endl;
-    cout << "All Admins after clearing:" << endl;
-    m.getAllAdmins();
-    cout << "-------------------" << endl;
+    return 0;
 }
