@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 #include "Admin.h"
 #include "Employee.h"
 #include "Client.h"
@@ -26,6 +25,21 @@ public:
         cout << "6. View Client Details\n";
         cout << "7. Logout\n";
         cout << "Enter your choice: ";
+    }
+
+    static Admin *Login(int id, string password)
+    {
+        vector<Admin *> admins = {};
+        for (Admin *admin : admins)
+        {
+            if (admin->getId() == id && admin->getPassword() == password)
+            {
+                cout << "Login successful!" << endl;
+                return admin;
+            }
+        }
+        cout << "Invalid credentials. Login failed." << endl;
+        return nullptr;
     }
 
     static void addEmployee(vector<Employee> &employees)
@@ -94,7 +108,7 @@ public:
         cout << "Enter Client ID: ";
         cin >> id;
         cout << "Enter Client Name: ";
-        cin.ignore();
+        cin.ignore(); // لتجنب مشاكل قراءة السطر بالكامل
         getline(cin, name);
         cout << "Enter Client Password: ";
         cin >> password;
