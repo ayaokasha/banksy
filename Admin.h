@@ -18,7 +18,8 @@ private:
 
 public:
     Admin() : Employee(0, " ", " ", 0.0) {}
-    Admin(int id, const string &name, const string &password, double salary) : Employee(id, name, password, salary) {}
+    Admin(int id, string name, string password, double salary)
+        : Employee(id, name, password, salary) {}
     // client
     void addClient(const Client &client)
     {
@@ -51,12 +52,14 @@ public:
             cout << "Client not found" << endl;
         }
     }
-    void listClients(){
-        if(clients.empty()){
+    void listClients()
+    {
+        if (clients.empty())
+        {
             cout << "No clients available" << endl;
             return;
         }
-        for(auto &client : clients)
+        for (auto &client : clients)
             client.display();
     }
     // employee
@@ -91,13 +94,15 @@ public:
         {
             cout << "Employee not found" << endl;
         }
-    } 
-   void listEmployees(){
-        if(employees.empty()){
+    }
+    void listEmployees()
+    {
+        if (employees.empty())
+        {
             cout << "No  employee available" << endl;
             return;
         }
-        for(auto &employee : employees)
+        for (auto &employee : employees)
             employee.display();
     }
     // display

@@ -20,15 +20,16 @@ using namespace std;
 
 int main()
 {
-    Screen::showMainScreen();
+    Screens::runApp();
 
     vector<Client> clients;
     vector<Employee> employees;
     vector<Admin> admins;
 
-    admins.push_back(Admin(1, "basmala", "admin123"));
-    employees.push_back(Employee(101, "ayaaaa", "pass123", 5000.0));
-    clients.push_back(Client(201, "nadaaaa", "client123", 1500.0));
+    admins.push_back(Admin(1, "Admin", "admin123", 10000.0));
+
+    employees.push_back(Employee(101, "John Doe", "pass123", 5000.0));
+    clients.push_back(Client(201, "Jane Smith", "client123", 1500.0));
 
     while (true)
     {
@@ -97,5 +98,4 @@ int main()
             cout << "Invalid choice. Try again.\n";
         }
     }
-    return 0;
 }
