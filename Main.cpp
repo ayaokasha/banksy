@@ -21,6 +21,33 @@ using namespace std;
 
 int main()
 {
+ Admin admin(1, "Basmala","7004");
+    
+    Employee employee(23, "Israa" , 6565);
+    
+    int adminID;
+    string password;
+    // Client
+
+    int id;
+    string password;
+
+    cout << "Welcome to the Bank System" << endl;
+    cout << "Enter your ID: " << endl;
+    cin >> id;
+    cout << "Enter your password: " << endl;
+    cin >> password;
+
+    Client c1 = ClientManager::login(id, password);
+
+    if(c1.getId() != 0){
+        cout << "Access Granted" << endl;
+        ClientManager::printClientMenu(c1);
+    }
+    else{
+        cout << "Access Denied" << endl;
+    }
+    
     // Client
     Client c1;
     c1.getId();
