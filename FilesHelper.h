@@ -1,6 +1,5 @@
-#ifndef FILESHELPER_H
-#define FILESHELPER_H
-
+#ifndef FILESHELPER_H_INCLUDED
+#define FILESHELPER_H_INCLUDED
 #include <iostream>
 #include <fstream>
 
@@ -17,14 +16,15 @@ class FilesHelper
 {
 public:
     // clinet
-    static void saveClient(string fileName, string lastFile)
+    static void saveClient(string fileName, string lastFile, Client client)
     {
-        string file = " Client.text";
-        ofstream ClientFile(file, ios::app);
-        if (!ClientFile)
-        {
+        ofstream ClientFile(fileName,ios::app);
+        if(!ClientFile){
             cout << " unable to open file" << endl;
+            return; 
         }
+        ClientFile << client.getId() << " " << client.getName() << " " << client.getPassword() << " " << client.getBalance() << endl;
+        ClientFile.close();
     }
     static void savelastClient(string filename)
     {
@@ -32,6 +32,7 @@ public:
         if (!ClientFile)
         {
             cout << "Error: Unable to open file " << endl;
+            return;
         }
         ClientFile << 1;
         ClientFile.close();
@@ -43,6 +44,7 @@ public:
         if (!ClientFile)
         {
             cout << "Error: Unable to open file " << endl;
+            return -1;
         }
         int id;
         ClientFile >> id;
@@ -61,6 +63,7 @@ public:
         if (!ClientFile)
         {
             cout << "Error: Unable to open file " << endl;
+            return;
         }
         ClientFile.close();
         ofstream Id(lastidfile, ios::trunc);
@@ -70,7 +73,7 @@ public:
     // employee
     static void saveEmployee(string fileName, string lastFile)
     {
-        string file = " employee.text";
+        string file = "employee.txt";
         ofstream employeeFile(file, ios::app);
         if (!employeeFile)
         {
@@ -158,5 +161,4 @@ public:
         lastId.close();
     }
 };
-
-#endif
+#endif // FILESHELPER_H_INCLUDED
