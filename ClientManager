@@ -12,7 +12,8 @@ using namespace std;
 class ClientManager{
 public:
     static Client login(int id , string password){
-        vector <Client> clients = FileManager::getAllClients();
+        FileManager fileManager;
+        vector <Client> clients = fileManager.getAllClients();
         for(Client& client : clients){
             if(client.getId() == id && client.getPassword() == password){
                 cout << "Login successful" << client.getName() << endl;
@@ -27,7 +28,7 @@ public:
         client.setPassword(newPassword);
         cout << "Password updated successfully" << endl;
     }
-    static void printClientMenu(Client* client){
+    static void printClientMenu(Client& client){
         int choice;
         do{
             cout << "Client Menu" << endl;
@@ -39,22 +40,22 @@ public:
             cout << "6. logout" << endl;
             cout << "Enter your choice: " << endl;
             cin >> choice;
-            
+
             switch(choice){
                 case 1:
-                    client->checkBalance();
+                    client.checkBalance();
                     break;
                 case 2:
                     double depositAmount;
                     cout <<"Enter deposit amount: ";
                     cin >> depositAmount;
-                    client->setDeposit(depositAmount);
+                    client.setDeposit(depositAmount);
                     break;
                 case 3:
                      double WithdrawAmount;
                     cout <<"Enter withdraw amount: ";
                     cin >> WithdrawAmount;
-                    client->setWithdraw(WithdrawAmount);
+                    client.setWithdraw(WithdrawAmount);
                     break;
                 case 4:
                     updatePassword(client);
