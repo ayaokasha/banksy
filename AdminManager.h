@@ -20,16 +20,17 @@ public:
         cout << "1. Add Employee\n";
         cout << "2. Remove Employee\n";
         cout << "3. View Employee Details\n";
-        cout << "4. Add Client\n";
-        cout << "5. Remove Client\n";
-        cout << "6. View Client Details\n";
-        cout << "7. Logout\n";
+        cout << "4. Edit Employee\n";
+        cout << "5. Add Client\n";
+        cout << "6. Remove Client\n";
+        cout << "7. View Client Details\n";
+        cout << "8. Edit Client\n";
+        cout << "9. Logout\n";
         cout << "Enter your choice: ";
     }
 
-    static Admin *Login(int id, string password)
+    static Admin *Login(vector<Admin *> &admins, int id, string password)
     {
-        vector<Admin *> admins = {};
         for (Admin *admin : admins)
         {
             if (admin->getId() == id && admin->getPassword() == password)
@@ -44,113 +45,90 @@ public:
 
     static void addEmployee(vector<Employee> &employees)
     {
-        int id;
-        string name, password;
-        double salary;
-
-        cout << "Enter Employee ID: ";
-        cin >> id;
-        cout << "Enter Employee Name: ";
-        cin >> name;
-        cout << "Enter Employee Password: ";
-        cin >> password;
-        cout << "Enter Employee Salary: ";
-        cin >> salary;
-
-        employees.push_back(Employee(id, name, password, salary));
-        cout << "Employee added successfully.\n";
+        cout << "Adding new employee...\n";
     }
 
     static void removeEmployee(vector<Employee> &employees)
     {
-        int id;
-        cout << "Enter Employee ID to remove: ";
-        cin >> id;
-
-        for (auto it = employees.begin(); it != employees.end(); ++it)
-        {
-            if (it->getId() == id)
-            {
-                employees.erase(it);
-                cout << "Employee removed successfully.\n";
-                return;
-            }
-        }
-        cout << "Employee not found.\n";
+        cout << "Removing an employee...\n";
     }
 
-    static void viewEmployeeDetails(const vector<Employee> &employees)
+    static void viewEmployeeDetails(vector<Employee> &employees)
     {
-        int id;
-        cout << "Enter Employee ID to view: ";
-        cin >> id;
-
-        for (const Employee &emp : employees)
-        {
-            if (emp.getId() == id)
-            {
-                cout << "ID: " << emp.getId()
-                     << ", Name: " << emp.getName()
-                     << ", Salary: $" << emp.getSalary()
-                     << endl;
-                return;
-            }
-        }
-        cout << "Employee not found.\n";
+        cout << "Viewing employee details...\n";
     }
 
     static void addClient(vector<Client> &clients)
     {
-        int id;
-        string name, password;
-        double balance;
-
-        cout << "Enter Client ID: ";
-        cin >> id;
-        cout << "Enter Client Name: ";
-        cin.ignore(); // لتجنب مشاكل قراءة السطر بالكامل
-        getline(cin, name);
-        cout << "Enter Client Password: ";
-        cin >> password;
-        cout << "Enter Initial Balance: ";
-        cin >> balance;
-
-        clients.push_back(Client(id, name, password, balance));
-        cout << "Client added successfully.\n";
+        cout << "Adding new client...\n";
     }
 
     static void removeClient(vector<Client> &clients)
     {
+        cout << "Removing a client...\n";
+    }
+
+    static void viewClientDetails(vector<Client> &clients)
+    {
+        cout << "Viewing client details...\n";
+    }
+
+    static void editEmployee(vector<Employee> &employees)
+    {
         int id;
-        cout << "Enter Client ID to remove: ";
+        cout << "Enter Employee ID to edit: ";
         cin >> id;
 
-        for (auto it = clients.begin(); it != clients.end(); ++it)
+        for (Employee &emp : employees)
         {
-            if (it->getId() == id)
+            if (emp.getId() == id)
             {
-                clients.erase(it);
-                cout << "Client removed successfully.\n";
+                string name, password;
+                double salary;
+
+                cout << "Enter new Employee Name: ";
+                cin.ignore();
+                getline(cin, name);
+                cout << "Enter new Employee Password: ";
+                cin >> password;
+                cout << "Enter new Employee Salary: ";
+                cin >> salary;
+
+                emp.setName(name);
+                emp.setPassword(password);
+                emp.setSalary(salary);
+                cout << "Employee updated successfully.\n";
                 return;
             }
         }
-        cout << "Client not found.\n";
+        cout << "Employee not found.\n";
     }
 
-    static void viewClientDetails(const vector<Client> &clients)
+    static void editClient(vector<Client> &clients)
     {
         int id;
-        cout << "Enter Client ID to view: ";
+        cout << "Enter Client ID to edit: ";
         cin >> id;
 
-        for (const Client &client : clients)
+        for (Client &client : clients)
         {
             if (client.getId() == id)
             {
-                cout << "ID: " << client.getId()
-                     << ", Name: " << client.getName()
-                     << ", Balance: $" << client.getBalance()
-                     << endl;
+                string name, password;
+                double balance;
+
+                cout << "Enter new Client Name: ";
+                cin.ignore();
+                getline(cin, name);
+                cout << "Enter new Client Password: ";
+                cin >> password;
+                cout << "Enter new Balance: ";
+                cin >> balance;
+
+                client.setName(name);
+                client.setPassword(password);
+                client.setBalance(balance);
+                cout << "Client updated successfully.\n";
                 return;
             }
         }
@@ -175,15 +153,21 @@ public:
             viewEmployeeDetails(employees);
             break;
         case 4:
-            addClient(clients);
+            editEmployee(employees);
             break;
         case 5:
-            removeClient(clients);
+            addClient(clients);
             break;
         case 6:
-            viewClientDetails(clients);
+            removeClient(clients);
             break;
         case 7:
+            viewClientDetails(clients);
+            break;
+        case 8:
+            editClient(clients);
+            break;
+        case 9:
             return false;
         default:
             cout << "Invalid choice. Try again.\n";
