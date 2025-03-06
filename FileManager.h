@@ -1,6 +1,5 @@
-#ifndef FILEMANAGER_H
-#define FILEMANAGER_H
-
+#ifndef FILEMANAGER_H_INCLUDED
+#define FILEMANAGER_H_INCLUDED
 #include <iostream>
 #include <fstream>
 
@@ -32,6 +31,7 @@ public:
         if (!ClientFile)
         {
             cout << "Unable to open file" << endl;
+            return;
         }
         string line;
         while (getline(ClientFile, line))
@@ -69,7 +69,7 @@ public:
 
     void removeAllEmployees() override
     {
-        ofstream file("admin.employee", ios::trunc);
+        ofstream file("employee.txt", ios::trunc);
         file.close();
     }
     // admin
@@ -126,4 +126,4 @@ public:
         cout << "All admins have been removed successfully." << endl;
     }
 };
-#endif
+#endif // FILEMANAGER_H_INCLUDED
